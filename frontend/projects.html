@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <div class="title">Projects</div>
+  </nav>
+</header>
+
+<main class="container">
+  <form class="project-form" id="project-form">
+    <input type="text" id="projectName" placeholder="Project Name" required>
+    <input type="text" id="projectDesc" placeholder="Project Description" required>
+    
+    <div class="language-selector">
+      <select id="projectLang" required>
+        <option value="" disabled selected>Choose Language</option>
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="otherLangInput" placeholder="Enter language" style="display: none;">
+    </div>
+    
+    <textarea id="projectDetails" placeholder="Detailed Status / Progress"></textarea>
+    <button type="submit" id="addProjectBtn" class="add-btn">
+      <i class="fa-solid fa-plus"></i> Add Project
+    </button>
+  </form>
+
+  <div class="projects-section">
+    <h2>Working Projects</h2>
+    <section class="project-cards" id="workingProjectList"></section>
+  </div>
+
+  <div class="projects-section completed-section">
+    <h2>Recently Completed</h2>
+    <section class="project-cards" id="completedProjectList"></section>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 All rights reserved.</p>
+</footer>
+
+<script>
+  function goBack() { window.history.back(); }
+</script>
+<script src="js/projects.js"></script>
+</body>
+</html>

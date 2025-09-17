@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <link rel="stylesheet" href="css/delete_account.css">
+</head>
+<body>
+    <div class="delete-container">
+        <div class="delete-card">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h2>Are you sure?</h2>
+            <p>This action is permanent and cannot be undone. All of your projects, tasks, and habits will be permanently deleted.</p>
+            <div id="message"></div>
+            <div class="button-group">
+                <button class="btn-cancel" onclick="goBack()">Cancel</button>
+                <button class="btn-delete" id="confirmDeleteBtn">Yes, Delete My Account</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/delete_account.js"></script>
+    <script>
+        function goBack() { window.history.back(); }
+    </script>
+</body>
+</html>
