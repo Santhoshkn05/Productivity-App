@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory 
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
@@ -25,7 +25,8 @@ from routes.project_updates_routes import update_bp
 load_dotenv()
 
 def create_app():
-    app = Flask(__name__)
+
+    app = Flask(__name__, static_folder='build', static_url_path='/')
 
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
     app.config['JWT_SECRET_KEY'] = os.getenv("JWT_SECRET_KEY")
@@ -40,11 +41,8 @@ def create_app():
     db.init_app(app)
     JWTManager(app)
     Mail(app)
-    CORS(
-        app,
-        resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}},
-        supports_credentials=True
-    )
+
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     app.register_blueprint(auth_bp)
     app.register_blueprint(task_bp, url_prefix="/api/tasks/")
@@ -57,9 +55,14 @@ def create_app():
 
     @app.route("/")
     def index():
-        return "Your Flask API is running!"
+        return send_from_directory(app.static_folder, 'index.html')
+
+    @app.errorhandler(404)
+    def not_found(e):
+        return send_from_directory(app.static_folder, 'index.html')
 
     return app
+
 app = create_app()
 
 if __name__ == "__main__":
