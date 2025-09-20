@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="css/habits.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <button class="back-btn" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <div class="title">Track Habits</div>
+  </nav>
+</header>
+
+<div class="main-container">
+  <div class="habit-container">
+    <div class="habit-card">
+      <h3>💪 Fitness Habits</h3>
+      <select>
+        <option value="">-- Select Habit --</option>
+        <option value="Morning Workout">Morning Workout</option>
+        <option value="Evening Walk">Evening Walk</option>
+        <option value="Stretching / Yoga">Stretching / Yoga</option>
+        <option value="Drink Water 8x/day">Drink Water 8x/day</option>
+      </select>
+      <div class="description-box" style="display: none;">
+        <h4>Notes (Optional)</h4>
+        <textarea placeholder="Add any notes for this habit..."></textarea>
+        <button>Save Habit</button>
+      </div>
+      <div class="saved-habits">
+        <h4>Pending Habits:</h4>
+        <div class="habit-list"></div>
+      </div>
+    </div>
+
+    <div class="habit-card">
+      <h3>🧘 Mindfulness</h3>
+      <select>
+        <option value="">-- Select Habit --</option>
+        <option value="Meditation 10 min">Meditation 10 min</option>
+        <option value="Gratitude Journal">Gratitude Journal</option>
+        <option value="Read Inspirational Quotes">Read Inspirational Quotes</option>
+        <option value="Breathing Exercises">Breathing Exercises</option>
+      </select>
+      <div class="description-box" style="display: none;">
+        <h4>Notes (Optional)</h4>
+        <textarea placeholder="Add any notes for this habit..."></textarea>
+        <button>Save Habit</button>
+      </div>
+      <div class="saved-habits">
+        <h4>Pending Habits:</h4>
+        <div class="habit-list"></div>
+      </div>
+    </div>
+    
+    <div class="completed-habits-container">
+        <h2>Recently Completed</h2>
+        <div id="completed-habits-list">
+            </div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <h3>📊 Weekly Consistency</h3>
+    <canvas id="progressChart"></canvas>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 All rights reserved.</p>
+</footer>
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+<script src="js/habits.js"></script>
+</body>
+</html>
